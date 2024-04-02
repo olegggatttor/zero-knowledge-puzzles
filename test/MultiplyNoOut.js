@@ -16,7 +16,7 @@ describe("Add Test ", function (){
     this.timeout(100000);
 
     it("Should validate a multiplication", async()=>{
-        const circuit = await wasm_tester(path.join(__dirname,"../MultiplyNoOutput/","MultiplyNoOutput.circom"));
+        const circuit = await wasm_tester(path.join(__dirname,"../MultiplyNoOut/","MultiplyNoOut.circom"));
         await circuit.loadConstraints();
 
         let witness = await circuit.calculateWitness({"in":[4,5,20]},true);
