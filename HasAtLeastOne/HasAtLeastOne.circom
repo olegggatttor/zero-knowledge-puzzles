@@ -11,6 +11,17 @@ template HasAtLeastOne(n) {
     signal input k;
     signal output out;
 
+    signal carry[n + 1];
+
+    carry[0] <== 1;
+    for (var i = 1; i < n + 1; i++) {
+        carry[i] <== carry[i - 1] * (in[i - 1] - k);
+    }
+
+    component res = IsZero();
+    res.in <== carry[n];
+    res.out ==> out;
+
 }
 
 component main = HasAtLeastOne(4);

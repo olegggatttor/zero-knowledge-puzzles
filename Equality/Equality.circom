@@ -4,9 +4,15 @@ pragma circom 2.1.4;
 // Return using signal 'c'.
 
 template Equality() {
-   // Your Code Here..
+   signal input a[3];
+   signal output c;
 
-   
+   signal temp1;
+   signal temp2;
+
+   temp1 <-- a[0] - a[1] == 0 ? 1 : 0;
+   temp2 <-- a[1] - a[2] == 0 ? 1 : 0;
+   c <== temp1 * temp2;
 }
 
 component main = Equality();

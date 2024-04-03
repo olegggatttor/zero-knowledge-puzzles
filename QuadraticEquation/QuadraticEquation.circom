@@ -14,6 +14,21 @@ template QuadraticEquation() {
     signal output out;  // If res is correct , then return 1 , else 0 . 
 
     // your code here
+    signal xSquared;
+    signal axSquared;
+    signal bx;
+    signal tempRes;
+
+    xSquared <== x * x;
+    axSquared <== a * xSquared;
+    bx <== b * x;
+
+    tempRes <== axSquared + bx + c - res;
+
+    component checker = IsZero();
+    checker.in <== tempRes;
+    checker.out ==> out;
+
 }
 
 component main  = QuadraticEquation();
